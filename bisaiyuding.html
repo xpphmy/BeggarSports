@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script src="js/index.js"></script>
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/mobiscroll_002.js" type="text/javascript"></script>
+    <script src="js/mobiscroll.js" type="text/javascript"></script>
+</head>
+<body class="body_bg1">
+
+    <div class="half_top">
+        <div class="swiper-container banList">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="images/a_02.png"></div>
+                <div class="swiper-slide"><img src="images/er_03.png"></div>
+                <div class="swiper-slide"><img src="images/cc_02.png"></div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="half_min">
+        <ul>
+            <li>
+                <i class="half_min_i1 fl">比赛预订</i>
+                <i class="half_min_i2 fr">价格：50/小时</i>
+            </li>
+            <li class="half_li_bg">
+                <i class="half_min_i1 half_i_bg1 fl">日期</i>
+                <input name="appDate" id="appDate" class="appDate2" type="text">
+
+            </li>
+            <li class="half_li_bg">
+                <i class="half_min_i1 half_i_bg2 fl">时间</i>
+                <div class="select_div">
+                    <select>
+                        <option value ="1">08:00—09:00</option>
+                        <option value ="2">09:00—10:00</option>
+                        <option value="3">10:00—11:00</option>
+                    </select>
+                </div>
+            </li>
+            <li class="half_li_bg">
+                <i class="half_min_i1 half_i_bg3 fl">场地</i>
+               <div class="select_div">
+                   <select>
+                       <option value ="1">比赛专用</option>
+                       <option value ="2">比赛专用2</option>
+                   </select>
+               </div>
+            </li>
+        </ul>
+        <h2>场地介绍：</h2>
+        <p>
+            这是场地介绍等信息，这是场地介绍等信息这是场
+            这是场地介绍等信息这是场地介绍等信息这是场地
+            这是场地介绍等信息这是场地介绍等信息这是场地
+            这是场地介绍等信息这是场地介绍等信息。
+        </p>
+    </div>
+
+    <button class="half_btn">立即预定</button>
+    <div id="datePlugin"></div>
+    <script type="text/javascript">
+        var banList = new Swiper('.banList',{
+            autoplay : 3000,
+            autoplayDisableOnInteraction: false,
+            paginationClickable: true,
+            pagination: '.pagBan',
+        });
+
+        $(function () {
+            var currYear = (new Date()).getFullYear();
+            var opt={};
+            opt.date = {preset : 'date'};
+            opt.datetime = {preset : 'datetime'};
+            opt.time = {preset : 'time'};
+            opt.default = {
+                theme: 'android-ics light', //皮肤样式
+                display: 'modal', //显示方式
+                mode: 'scroller', //日期选择模式
+                dateFormat: 'yyyy/mm/dd',
+                lang: 'zh',
+                showNow: true,
+                nowText: "今天",
+                startYear: currYear, //开始年份
+                endYear: currYear + 5 //结束年份
+            };
+            $("#appDate").mobiscroll($.extend(opt['date'], opt['default']));
+            var tDate = new Date();
+            var str = tDate.getFullYear()+"/"+(tDate.getMonth()+1)+"/"+tDate.getDate();
+            $("#appDate").val(str);
+        });
+    </script>
+</body>
+</html>

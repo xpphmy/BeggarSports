@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/index.js"></script>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/mobiscroll_002.js" type="text/javascript"></script>
+    <script src="js/mobiscroll.js" type="text/javascript"></script>
+</head>
+<body class="body_bg1">
+
+        <div class="score_top">
+            <span class="score_span"></span>
+            <input name="appDate" id="appDate" class="appDate2" type="text">
+        </div>
+
+        <ul class="score_ul">
+            <li>
+                <i class="scan_i1">进攻</i><i class="scan_i2">1</i>
+            </li>
+            <li>
+                <i class="scan_i1">防守</i><i class="scan_i2">1</i>
+            </li>
+            <li>
+                <i class="scan_i1">篮板</i><i class="scan_i2">1</i>
+            </li>
+            <li>
+                <i class="scan_i1">投射</i><i class="scan_i2">1</i>
+            </li>
+            <li>
+                <i class="scan_i1">篮板</i><i class="scan_i2">5</i>
+            </li>
+            <li>
+                <i class="scan_i1">投射</i><i class="scan_i2">1</i>
+            </li>
+            <li class="mt20">
+                <i class="scan_i1">此次平均分：</i><i class="scan_average">8</i>
+            </li>
+        </ul>
+
+
+        <script type="text/javascript">
+            var len = $('.score_ul li').length;
+            var num = 0;
+            for( var i=0; i<len-1; i++ ){
+                var num1 = parseFloat($('.score_ul li').eq(i).find('.scan_i2').text());
+                num += num1;
+            }
+            console.log(num);
+
+//            保存平均数
+           var pnum = $('.scan_average').text(parseFloat((num/(len-1)*100)/100 ).toFixed(1));
+
+//           总评分的值
+           var znum =  $(".score_span").html("总评分 : "+ $(".scan_average").html() );
+
+
+
+//            日期插件
+            $(function () {
+                    var currYear = (new Date()).getFullYear();
+                    var opt={};
+                    opt.date = {preset : 'date'};
+                    opt.datetime = {preset : 'datetime'};
+                    opt.time = {preset : 'time'};
+                    opt.default = {
+                        theme: 'android-ics light', //皮肤样式
+                        display: 'modal', //显示方式
+                        mode: 'scroller', //日期选择模式
+                        dateFormat: 'yyyy/mm/dd',
+                        lang: 'zh',
+                        showNow: true,
+                        nowText: "今天",
+                        startYear: currYear, //开始年份
+                        endYear: currYear + 5 //结束年份
+                    };
+                    $("#appDate").mobiscroll($.extend(opt['date'], opt['default']));
+                    var tDate = new Date();
+                    var str = tDate.getFullYear()+"/"+(tDate.getMonth()+1)+"/"+tDate.getDate();
+                    $("#appDate").val(str);
+                });
+    </script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/jquery.validate.js"></script>
+</head>
+<body class="body_bg2">
+    <div class="login_top"></div>
+
+    <form action="#" class="tform">
+        <div class="login_min">
+            <span class="login_min_s">
+                <img src="images/c_03.png" alt="">
+            </span>
+            <div class="login_min_div">
+                <div class="login_min_d1">
+                    <input type="text" placeholder="输入手机号" name="tel">
+                </div>
+                <div class="login_min_d3">
+                    <input type="text" placeholder="输入验证码" name="yzm">
+                    <span class="msgs">获取验证码</span>
+                </div>
+                <div class="login_min_d2">
+                    <input type="text" placeholder="输入新密码" name="pas">
+                </div>
+            </div>
+
+            <input type="submit" class="login_min_btn2" value="确认修改"/>
+        </div>
+    </form>
+
+    <script type="text/javascript">
+
+        $(".tform").submit(function(){
+            var tel = $(this).find("input[name=tel]").val();
+            var yzm = $(this).find("input[name=yzm]").val();
+            var pas = $(this).find("input[name=pas]").val();
+            if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(tel))){
+                alert("请输入正确的手机号!");
+                return false;
+            }
+            if(yzm=="" || yzm.length<0){
+                alert("验证码");
+                return false;
+            }
+            if(pas=="" || pas.length<0){
+                alert("请输入密码");
+                return false;
+            }
+            return false;
+        });
+
+        $(function  () {
+            //获取短信验证码
+            var validCode=true;
+            $(".msgs").click (function  () {
+                var time=60;
+                var code=$(this);
+                if (validCode) {
+                    validCode=false;
+                    code.addClass("msgs");
+                    var t=setInterval(function  () {
+                        time--;
+                        code.html(time+"秒").css('color','#fdbd06');
+                        if (time==0) {
+                            clearInterval(t);
+                            code.html("重新获取").css({'color':'#fdbd06','margin-top':'10px/$i'});
+                            validCode=true;
+                            code.removeClass("msgs1");
+                        }
+                    },1000)
+                }
+            })
+        })
+    </script>
+</body>
+</html>

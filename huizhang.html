@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/index.js"></script>
+    <script src="js/jquery-1.9.1.js"></script>
+</head>
+<body class="body_bg1">
+
+    <ul class="medal_ul">
+        <li class="medal_ul_active">已获得</li>
+        <li>未获得</li>
+    </ul>
+
+    <div class="medal_min">
+        <ul style="display: block">
+            <li>
+                <img src="images/x.png" alt="">
+                <div>
+                    <i class="medal_min_i1">争分夺秒</i>
+                    <i class="medal_min_i2">徽章简介徽章简介徽章简介徽章简介</i>
+                </div>
+            </li>
+            <li>
+                <img src="images/x.png" alt="">
+                <div>
+                    <i class="medal_min_i1">争分夺秒</i>
+                    <i class="medal_min_i2">徽章简介徽章简介徽章简介徽章简介</i>
+                </div>
+            </li>
+            <li>
+                <img src="images/x.png" alt="">
+                <div>
+                    <i class="medal_min_i1">争分夺秒</i>
+                    <i class="medal_min_i2">徽章简介徽章简介徽章简介徽章简介</i>
+                </div>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <img src="images/x2.png" alt="">
+                <div>
+                    <i class="medal_min_i1">争分夺秒</i>
+                    <i class="medal_min_i2">徽章简介徽章简介徽章简介徽章简介</i>
+                </div>
+            </li>
+            <li>
+                <img src="images/x2.png" alt="">
+                <div>
+                    <i class="medal_min_i1">争分夺秒</i>
+                    <i class="medal_min_i2">徽章简介徽章简介徽章简介徽章简介</i>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+<script>
+    $(".medal_ul li").click(function(){
+        $(".medal_ul li").removeClass("medal_ul_active");
+        $(this).addClass("medal_ul_active");
+        var index=$(this).index();
+        $('.medal_min > ul').eq(index).show().siblings('ul').hide();
+    })
+</script>
+
+</body>
+</html>

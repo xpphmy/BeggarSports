@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/index.js"></script>
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/jquery.range.js"></script>
+</head>
+<body class="body_bg1">
+<div class="login_top">
+    <button></button>
+    <i>个人评定</i>
+    <a class="baocun">保存</a>
+</div>
+    <div class="evaluate_top">
+        <span>位置</span>
+        <i class="evaluate_top_i"></i>
+        <div class="evaluate_top_div">
+            <img class="evaluate_top_img" src="images/k_05.png" alt="">
+            <ul class="evaluate_top_ul  ulclass">
+                <li>控球后卫</li>
+                <li>得分后卫</li>
+                <li>小前锋</li>
+                <li>大前锋</li>
+                <li>中锋</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="evaluate_min">
+        <div class="evaluate_min_div">
+            <i class="evaluate_i">进攻</i>
+            <input type="hidden" class="single-slider" value="" index="0"/>
+            <span class="sums"></span>
+        </div>
+        <div class="evaluate_min_div">
+            <i class="evaluate_i">防守</i>
+            <input type="hidden" class="single-slider" value="" index="1"/>
+            <span class="sums"></span>
+        </div>
+        <div class="evaluate_min_div">
+            <i class="evaluate_i">篮板</i>
+            <input type="hidden" class="single-slider" value="" index="2"/>
+            <span class="sums"></span>
+        </div>
+        <div class="evaluate_min_div">
+            <i class="evaluate_i">强壮</i>
+            <input type="hidden" class="single-slider" value="" index="3"/>
+            <span class="sums"></span>
+        </div>
+        <div class="evaluate_min_div">
+            <i class="evaluate_i">速度</i>
+            <input type="hidden" class="single-slider" value="" index="4"/>
+            <span class="sums"></span>
+        </div>
+        <div class="evaluate_min_div">
+            <i class="evaluate_i">弹跳</i>
+            <input type="hidden" class="single-slider" value="" index="5"/>
+            <span class="sums"></span>
+        </div>
+        <div class="evaluate_min_div">
+            <i class="evaluate_min_i">总评：<span>0</span>分</i>
+        </div>
+    </div>
+
+
+<script>
+    $(".evaluate_top_i").click(function(){
+       $(".evaluate_top_img").css("transform","rotate(180deg)");
+       $(".evaluate_top_ul").show();
+    });
+    $(".evaluate_top_ul li").click(function(){
+        $(".ulclass").hide();
+        $(".evaluate_top_i").html( $(this).html());
+        $(".evaluate_top_img").css("transform","rotate(0deg)");
+    });
+    $(function() {
+        var chang = function (){
+            var sing = $(".single-slider");
+            var zong = 0;
+            for (var i = 0; i < sing.length; i++) {
+                zong += parseInt(sing[i].value);
+            };
+            $(".evaluate_min_i span").html(parseFloat(zong/sing.length).toFixed(1));
+        }
+        $('.single-slider').jRange({
+            from: 0,//滑动范围的最小值，数字，如0
+            to: 10,//滑动范围的最大值，数字，如100
+            step: 1,//步长值，每次滑动大小
+            scale: [],//滑动条下方的尺度标签，数组类型，如[0,50,100]
+            format: '%s',//数值格式
+            width: 783,//滑动条宽度
+            showLabels: false,// 是否显示滑动条下方的尺寸标签
+            showScale: false, //是否显示滑块上方的数值标签
+            onstatechange:function (){
+                // var val = this.options;
+                var inp = this.inputNode[0];
+                var index = inp.getAttribute("index");
+                $(".sums").eq(index).html(inp.value);
+                chang();
+            }
+        });
+
+
+
+        chang();
+    });
+</script>
+
+</body>
+</html>

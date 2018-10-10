@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/index.js"></script>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/mobiscroll_002.js" type="text/javascript"></script>
+    <script src="js/mobiscroll.js" type="text/javascript"></script>
+</head>
+<body class="body_bg1">
+
+    <div class="half_min">
+        <ul>
+            <li class="half_li_bg">
+                <i class="half_min_i1 half_i_bg1 fl">日期</i>
+                <input name="appDate" id="appDate" class="appDate2" type="text">
+            </li>
+            <li class="half_li_bg">
+                <i class="half_min_i1 half_i_bg2 fl">时间</i>
+                <div class="select_div">
+                    <select>
+                        <option value ="1">08:00—09:00</option>
+                        <option value ="2">09:00—10:00</option>
+                        <option value="3">10:00—11:00</option>
+                    </select>
+                </div>
+            </li>
+        </ul>
+
+        <div class="reserve_min">
+            <p class="reserve_min_p">选择场位</p>
+            <div class="reserve_div">
+                <div class="reserve_circle1 reserve_d">
+                    <img src="images/er_03.png" alt="">
+                </div>
+                <div class="reserve_circle2 reserve_d"></div>
+                <div class="reserve_circle3 reserve_d"></div>
+                <div class="reserve_circle4 reserve_d"></div>
+                <div class="reserve_circle5 reserve_d"></div>
+                <div class="reserve_circle6 reserve_d"></div>
+                <div class="reserve_circle7 reserve_d"></div>
+                <div class="reserve_circle8 reserve_d"></div>
+                <div class="reserve_circle9 reserve_d"></div>
+                <div class="reserve_circle10 reserve_d"></div>
+                <div class="reserve_circle11 reserve_d"></div>
+                <div class="reserve_circle12 reserve_d"></div>
+            </div>
+        </div>
+
+        <h2>场地介绍：</h2>
+        <p>
+            这是场地介绍等信息，这是场地介绍等信息这是场
+            这是场地介绍等信息这是场地介绍等信息这是场地
+            这是场地介绍等信息这是场地介绍等信息这是场地
+            这是场地介绍等信息这是场地介绍等信息。
+        </p>
+    </div>
+
+    <button class="half_btn">立即预定</button>
+
+    <div class="vip_mt">
+        <div class="vip_mt_min">
+            <div class="vip_mt_d">
+                <img src="images/e_03.png" alt="">
+            </div>
+            <p class="vip_mt_p1">篮球小子</p>
+            <span class="vip_mt_s1">（教练，我想打篮球）</span>
+            <p class="vip_mt_p2">位置： <i>中锋</i></p>
+            <p class="vip_mt_p2">信誉评分： <i>6</i></p>
+            <p class="vip_mt_p2">技术评分： <i>6</i></p>
+
+            <button class="vip_mt_btn"></button>
+        </div>
+    </div>
+
+    <script>
+        $(".reserve_d").click(function(){
+            if($(this).find("img").length>=1){
+                var img = $(this).find("img").eq(0).attr("src");
+                $(".vip_mt").show();
+                $(".vip_mt").find(".vip_mt_d img").attr("src",img);
+                return false;
+            }
+
+            $(".reserve_d").each(function () {
+                if(this.status=="1"){
+                    $(this).find('img').remove();
+                }
+            });
+            this.status="1";
+            $(this).html("<img src='images/e_03.png'/>");
+        });
+
+        $(function () {
+            var currYear = (new Date()).getFullYear();
+            var opt={};
+            opt.date = {preset : 'date'};
+            opt.datetime = {preset : 'datetime'};
+            opt.time = {preset : 'time'};
+            opt.default = {
+                theme: 'android-ics light', //皮肤样式
+                display: 'modal', //显示方式
+                mode: 'scroller', //日期选择模式
+                dateFormat: 'yyyy/mm/dd',
+                lang: 'zh',
+                showNow: true,
+                nowText: "今天",
+                startYear: currYear, //开始年份
+                endYear: currYear + 5 //结束年份
+            };
+            $("#appDate").mobiscroll($.extend(opt['date'], opt['default']));
+            var tDate = new Date();
+            var str = tDate.getFullYear()+"/"+(tDate.getMonth()+1)+"/"+tDate.getDate();
+            $("#appDate").val(str);
+        });
+
+        $(".vip_mt_btn").click(function(){
+            $(".vip_mt").hide();
+        })
+
+    </script>
+</body>
+</html>

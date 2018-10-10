@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery-1.9.1.js"></script>
+    <script src="js/index.js"></script>
+</head>
+<body class="body_bg1">
+
+    <div class="details_top">
+        <p>订单二维码：</p>
+        <div class="details_top_div">
+            <img class="details_img1" src="images/ding_02.png" alt="">
+            <img class="details_img2" src="images/er_03.png" alt="">
+        </div>
+        <p>订单信息：</p>
+    </div>
+
+    <div class="details_min">
+        <p>这里是球馆名字 </p>
+        <p>半场预订 </p>
+        <p>2016年11月9日  08：00-10:00 </p>
+        <p>场地：①号场地 </p>
+        <p>预订人：张三 </p>
+        <p>联系电话：15839918673</p>
+    </div>
+
+    <div class="details_btm">
+        <a href="#" class="details_tk fl">退款</a>
+        <a href="#" class="fr">再次预定</a>
+    </div>
+
+    <div class="mtk">
+        <div class="refund_min">
+            <p class="refund_min_p1">退款金额：<i>￥50.00</i></p>
+            <p class="refund_min_p2">是否继续退款？</p>
+            <div>
+                <button class="mtk_btn1 fl">是</button>
+                <button class="mtk_btn2 fr">否</button>
+            </div>
+        </div>
+    </div>
+
+<script>
+    $(".details_tk").click(function(){
+        $(".mtk").show();
+    });
+    $(".mtk_btn2").click(function(){
+        $(".mtk").hide();
+    })
+</script>
+</body>
+</html>
